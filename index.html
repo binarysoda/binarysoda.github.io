@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Binary Soda</title>
+<style>
+body {
+	background:url(images/0.jpg) -999px 0 no-repeat;
+}
+form {
+	background:url(images/1.jpg) -999px 0 no-repeat;
+}
+div {
+	white-space:nowrap;
+}
+img {
+	margin:0 5px 0 0;
+}
+strong {
+	font-size:14pt;	
+}
+</style>
+</head>
+<body>
+
+<form action="#" method="post">
+Please enter a number: <input type="text" value="" size="15" maxlength="16" name="thedigits" /> <input type="submit" />
+</form>
+
+<div></div>
+
+<script type="text/javascript">
+	document.getElementsByTagName('FORM')[0].onsubmit = function()
+	{
+		var binaryNumber;
+
+		if (binaryNumber = function(val) {
+				for (var i = 0, l = val.length; i < l; i++)
+				{
+					if ('0123456789'.indexOf(val.charAt(i)) < 0)
+					{
+						return;
+					}
+				}
+
+				return i ? parseInt(val, 10).toString(2) : i;
+			}
+			(document.getElementsByName('thedigits')[0].value)
+		)
+		{
+			var innerHtml = ['<p>Here is the number you entered in binary:</p><p><strong>', binaryNumber, '</strong></p><p>And here is that binary number represented in cans of diet soda:</p>'];
+
+			for (var c, i = 0, l = binaryNumber.length; i < l; i++)
+			{
+				c = binaryNumber.charAt(i);
+				innerHtml.push('<img src="images/', c, '.jpg" alt="', c, '" />');
+			}
+
+			document.getElementsByTagName('DIV')[0].innerHTML = innerHtml.join('');
+		}
+		else
+		{
+			alert('Please enter a series of Arabic numerals with no letters or any other kind of character.');
+		}
+		
+		return false;
+	}
+</script>
+
+</body>
+</html>
